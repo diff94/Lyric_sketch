@@ -8,6 +8,7 @@ from collections import Counter
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 
 
+
 #pip install matplotlib
 #pip uninstall matplotlib
 #裝了彙有encode error

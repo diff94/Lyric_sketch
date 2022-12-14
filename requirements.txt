@@ -1,6 +1,5 @@
-streamlit==1.12.2
+streamlit
 pandas
-re
 math
 collections
 streamlit-aggrid
