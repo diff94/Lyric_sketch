@@ -4,3 +4,4 @@ re
 math
 collections
 st_aggrid
+streamlit-aggrid
