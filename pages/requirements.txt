@@ -1,0 +1,6 @@
+streamlit
+pandas
+re
+math
+collections
+st_aggrid

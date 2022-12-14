@@ -1,0 +1,10 @@
+import streamlit as st
+st.title("Home")
+st.header("🎉Lyrics")
+st.write("This section describes lyric length and frequent words of the two singers! Check them out!")
+st.header("🎉Lyricists Distribution")
+st.write("Some surprising facts about the lyricist number!")
+st.header("🎉Pronouns")
+st.write(" Pennebaker (2013), “quiet words can say more.” Pennebaker (2013) identifies function words as style words by pointing out, “A good rule of thumb is that people who pay a great deal of attention to other people tend to use personal pronouns at high rates.” *How does the quiet pronouns 'talk about'the songs? Check the differences!*")
+st.header("🎉Keyness")
+st.write("The keyness measure is a widely used bottom-up global statistical measure for keyword analysis, which can be used either to characterize a genre or to recognize crucial beliefs in a target text.*Try to find out the keyness words of each singer!*")
