@@ -287,18 +287,24 @@ if info_options == "Keyness":
         st.subheader("Chen : Keyness")
         tgt_G2_top10 = get_topn(keyness)
         tgt_G2_top10_df = pd.DataFrame(tgt_G2_top10)
-        dynamic_df(tgt_G2_top10_df.drop(['pref'], axis=1))
+        tgt_G2_top10_df['pref']="Chen's songs"
+        #dynamic_df(tgt_G2_top10_df.drop(['pref'], axis=1))
+        dynamic_df(tgt_G2_top10_df)
     elif singer_options == "Tsai":
         st.subheader("Tsai : Keyness")
         ref_G2_top10 = get_topn(keyness,pref = 'ref_corpus')
         ref_G2_top10_df = pd.DataFrame(ref_G2_top10)
-        dynamic_df(ref_G2_top10_df.drop(['pref'], axis=1))
+        ref_G2_top10_df['pref']="Tsai's songs"
+        # dynamic_df(ref_G2_top10_df.drop(['pref'], axis=1))
+        dynamic_df(ref_G2_top10_df)
     else:
-        st.subheader("Search the 100 Keyness words in the two corpora")
+        st.subheader("Search a keyness word to find out your matched singer!")
         tgt_G2_top10 = get_topn(keyness)
         tgt_G2_top10_df = pd.DataFrame(tgt_G2_top10)
+        tgt_G2_top10_df['pref']="Chen's songs"
         ref_G2_top10 = get_topn(keyness,pref = 'ref_corpus')
         ref_G2_top10_df = pd.DataFrame(ref_G2_top10)
+        ref_G2_top10_df['pref']="Tsai's songs"
         #找出keyness 在 pref = tgt or ref 的資料
         #有就print出文字欄位資訊
         #但print出時要drop pref那欄
@@ -308,11 +314,11 @@ if info_options == "Keyness":
         #燈愣 這兩個創作者目前都沒唱到的主題!
         #這裡
         all_top_100 = pd.concat([ref_G2_top10_df,tgt_G2_top10_df])
-        searchcheckbox_name_nickname = st.checkbox("Keyness Word:) ",value = False,key=1)
+        searchcheckbox_name_nickname = st.checkbox("✨Keyness Word:) ",value = False,key=1)
         # searchcheckbox_age = st.checkbox("age",value = False,key=2)
         df_result_search = pd.DataFrame() 
         if searchcheckbox_name_nickname:
-            name_search = st.text_input("Keyness Word:)")
+            name_search = st.text_input("✨Keyness Word:)")
             # nickname_search = st.text_input("nickname")
         else:
             name_search = ''
@@ -353,9 +359,13 @@ if info_options == "Keyness":
             # else:
             #     pass  # continue here.
                         
-        # st.write("{} Records ".format(str(df_result_search.shape[0])))
-        # st.dataframe(df_result_search)
-        dynamic_df(df_result_search)
+        if df_result_search.empty:
+                st.subheader("Neither of them has covered it!✨ Don't worry! Try different keyness words!")
+        else:
+                st.subheader("✨Listen to {}!!!✨".format(str(set(df_result_search.pref))))           
+                st.write("{} Records ".format(str(df_result_search.shape[0])))
+                st.dataframe(df_result_search)
+        # dynamic_df(df_result_search)
         # if (df_result_search['pref']!="tgt_corpus").all() :
         #     print ("Ah! Go listening to Tsai's songs!")
         # elif (df_result_search['pref']!="ref_corpus").all():
