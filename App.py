@@ -1,5 +1,7 @@
 # python.exe -m pip install --upgrade pip
 #pip install streamlit --upgrad
+#成功部署的網站
+#https://diff94-lyric-sketch-app-a4z7i5.streamlit.app/Data
 import streamlit as st
 
 st.set_page_config(
